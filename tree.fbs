@@ -1,0 +1,14 @@
+namespace ASTEd.Interface.Tree;
+
+struct Location {
+	start_byte:ulong;
+	end_byte:ulong;
+}
+
+table Node {
+	kind:string (required);
+	location:Location;
+	children:[Node];
+	named:bool (required);
+	text:[ushort];
+}

@@ -1,0 +1,33 @@
+include "tree.fbs";
+
+namespace ASTEd;
+
+enum ErrorKind:byte {
+	UnknownLang,
+}
+
+table Error {
+	kind:ErrorKind;
+	msg:string;
+}
+
+table InitRequest {
+	lang:string;
+}
+
+table InitResponse {
+	err:Error;
+}
+
+table FileRequest {
+	file:string;
+}
+
+table FileResponse {
+	tree:ASTEd.Interface.Tree.Node;
+}
+
+union Request {
+	InitRequest,
+	FileRequest,
+}
