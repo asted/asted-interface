@@ -9,6 +9,6 @@ table Node {
 	kind:string (required);
 	location:Location;
 	children:[Node];
-	named:bool (required);
+	named:bool;
 	text:[ushort];
 }
