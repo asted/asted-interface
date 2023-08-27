@@ -1,6 +1,6 @@
 include "tree.fbs";
 
-namespace ASTEd;
+namespace ASTEd.Interface;
 
 enum ErrorKind:byte {
 	UnknownLang,
