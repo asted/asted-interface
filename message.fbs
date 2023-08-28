@@ -2,32 +2,25 @@ include "tree.fbs";
 
 namespace ASTEd.Interface;
 
-enum ErrorKind:byte {
-	UnknownLang,
-}
-
-table Error {
-	kind:ErrorKind;
-	msg:string;
-}
-
 table InitRequest {
-	lang:string;
-}
-
-table InitResponse {
-	err:Error;
+	lang:string (required);
 }
 
 table FileRequest {
-	file:string;
+	path:string (required);
 }
 
 table FileResponse {
 	tree:ASTEd.Interface.Tree.Node;
 }
 
-union Request {
+union RequestUnion {
 	InitRequest,
 	FileRequest,
 }
+
+table Request {
+	request:RequestUnion (required);
+}
+
+root_type Request;

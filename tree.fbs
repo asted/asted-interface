@@ -12,3 +12,5 @@ table Node {
 	named:bool;
 	text:[ushort];
 }
+
+root_type Node;
