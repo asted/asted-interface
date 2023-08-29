@@ -1,5 +1,3 @@
-include "tree.fbs";
-
 namespace ASTEd.Interface;
 
 table InitRequest {
@@ -11,7 +9,7 @@ table FileRequest {
 }
 
 table FileResponse {
-	tree:ASTEd.Interface.Tree.Node;
+	tree:Node (required);
 }
 
 union RequestUnion {
@@ -21,6 +19,19 @@ union RequestUnion {
 
 table Request {
 	request:RequestUnion (required);
+}
+
+struct Location {
+	start_byte:uint;
+	end_byte:uint;
+}
+
+table Node {
+	kind:string (required);
+	location:Location;
+	children:[Node];
+	named:bool;
+	text:[ushort];
 }
 
 root_type Request;
